@@ -15,7 +15,7 @@ class test_add_contact(unittest.TestCase):
         self.wd = WebDriver()
         self.wd.implicitly_wait(60)
     
-    def test_test_add_contact(self):
+    def test_add_contact(self):
         success = True
         wd = self.wd
         self.open_start_page(wd)
