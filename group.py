@@ -4,3 +4,6 @@ class Group:
         self.group_name=group_name
         self.header=header
         self.footer=footer
+
+
+
