@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from selenium.webdriver.firefox.webdriver import WebDriver
-import unittest
+from selenium.webdriver.common.action_chains import ActionChains
+import time, unittest
 from group import Group
 
 def is_alert_present(wd):
@@ -17,23 +18,24 @@ class test_ad_group(unittest.TestCase):
     
     def test_ad_group(self):
         success = True
-        self.open_start_page(wd)
-        self.login(wd, username="admin", password="secret")
-        self.open_groups_page(wd)
-        self.create_group(wd, Group(group_name="ddfg", header="4fff", footer="fbhj"))
-        self.return_to_groups_page(wd)
-        self.logout(wd)
+
+        self.open_start_page()
+        self.login( username="admin", password="secret")
+        self.open_groups_page()
+        self.create_group( Group(group_name="ddfg", header="4fff", footer="fbhj"))
+        self.return_to_groups_page()
+        self.logout()
         self.assertTrue(success)
 
     def test_ad_empty_group(self):
         success = True
-        wd = self.wd
-        self.open_start_page(wd)
-        self.login(wd, username="admin", password="secret")
-        self.open_groups_page(wd)
-        self.create_group(wd, Group(group_name="", header="", footer=""))
-        self.return_to_groups_page(wd)
-        self.logout(wd)
+
+        self.open_start_page()
+        self.login( username="admin", password="secret")
+        self.open_groups_page()
+        self.create_group( Group(group_name="", header="", footer=""))
+        self.return_to_groups_page()
+        self.logout()
         self.assertTrue(success)
 
     def logout(self):
