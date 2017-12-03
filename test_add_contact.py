@@ -17,23 +17,26 @@ class test_add_contact(unittest.TestCase):
     
     def test_add_contact(self):
         success = True
-        wd = self.wd
-        self.open_start_page(wd)
-        self.login(wd, username="admin", password="secret")
-        self.open_add_new_page(wd)
-        self.add_new_contact(wd, Contact("ssdr", "rr", "rrr", "ghjk", "hjj", "rrt", "tttt", "456", "rrtt@rrt.ty"))
-        self.go_home_page(wd)
-        self.logout(wd)
+
+        self.open_start_page()
+        self.login( username="admin", password="secret")
+        self.open_add_new_page()
+        self.add_new_contact(Contact("ssdr", "rr", "rrr", "ghjk", "hjj", "rrt", "tttt", "456", "rrtt@rrt.ty"))
+        self.go_home_page()
+        self.logout()
         self.assertTrue(success)
 
-    def logout(self, wd):
+    def logout(self):
+        wd = self.wd
         wd.find_element_by_link_text("Logout").click()
 
-    def go_home_page(self, wd):
+    def go_home_page(self):
+        wd = self.wd
         wd.find_element_by_link_text("home").click()
 
-    def add_new_contact(self, wd, contact):
+    def add_new_contact(self, contact):
         #fill_contact_info
+        wd = self.wd
         wd.find_element_by_name("firstname").click()
         wd.find_element_by_name("firstname").clear()
         wd.find_element_by_name("firstname").send_keys(contact.firstname)
@@ -64,10 +67,12 @@ class test_add_contact(unittest.TestCase):
         #clic
         wd.find_element_by_xpath("//div[@id='content']/form/input[21]").click()
 
-    def open_add_new_page(self, wd):
+    def open_add_new_page(self):
+        wd = self.wd
         wd.find_element_by_link_text("add new").click()
 
-    def login(self, wd, username, password):
+    def login(self, username, password):
+        wd = self.wd
         wd.find_element_by_name("user").click()
         wd.find_element_by_name("user").clear()
         wd.find_element_by_name("user").send_keys(username)
@@ -76,7 +81,8 @@ class test_add_contact(unittest.TestCase):
         wd.find_element_by_name("pass").send_keys(password)
         wd.find_element_by_xpath("//form[@id='LoginForm']/input[3]").click()
 
-    def open_start_page(self, wd):
+    def open_start_page(self):
+        wd = self.wd
         wd.get("http://localhost/addressbook/")
 
     def tearDown(self):
