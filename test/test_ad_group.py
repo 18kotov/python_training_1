@@ -16,7 +16,7 @@ def app(request):
 def test_ad_group(app):
 
 
-    app.open_start_page()
+    app.session.open_start_page()
     app.session.login( username="admin", password="secret")
     app.group.open_groups_page()
     app.group.create(Group(group_name="ddfg", header="4fff", footer="fbhj"))
@@ -27,7 +27,7 @@ def test_ad_group(app):
 def test_ad_empty_group(app):
 
 
-    app.open_start_page()
+    app.session.open_start_page()
     app.session.login( username="admin", password="secret")
     app.group.open_groups_page()
     app.group.create(Group(group_name="", header="", footer=""))

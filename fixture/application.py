@@ -13,9 +13,7 @@ class Application:
 
 
 
-    def open_start_page(self):
-        wd = self.wd
-        wd.get("http://localhost/addressbook/")
+
 
 
 

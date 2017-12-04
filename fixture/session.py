@@ -3,6 +3,11 @@ class SessionHelper:
     def __init__(self, app):
         self.app = app
 
+
+    def open_start_page(self):
+        wd = self.app.wd
+        wd.get("http://localhost/addressbook/")
+
     def login(self, username, password):
         wd = self.app.wd
         wd.find_element_by_name("user").click()
